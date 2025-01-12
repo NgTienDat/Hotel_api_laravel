@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('hotel_id')->constrained()->cascadeOnDelete();
+            $table->string('room_type');
+            $table->integer('capacity');
+            $table->boolean('available')->default(true);
             $table->timestamps();
         });
     }
