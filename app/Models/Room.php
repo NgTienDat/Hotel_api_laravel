@@ -6,5 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
-    //
+    protected $fillable = ['hotel_id', 'room_type', 'capacity', 'available'];
+
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
+
+    public function reservations()
+    {
+        return $this->belongsToMany(Reservation::class)->withTimestamps();
+    }
 }
